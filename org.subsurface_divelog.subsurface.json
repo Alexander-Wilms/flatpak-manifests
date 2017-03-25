@@ -1,0 +1,96 @@
+{
+	"app-id": "org.subsurface_divelog.subsurface",
+	"runtime": "org.kde.Platform",
+	"runtime-version": "master",
+	"sdk": "org.kde.Sdk",
+	"command": "subsurface",
+	"finish-args":[
+		"--socket=x11"
+	],
+	"modules":[
+		{
+			"name":"libssh2",
+			"buildsystem":"cmake",
+			"sources":[
+				{
+					"type":"git",
+					"url":"https://github.com/libssh2/libssh2.git"
+				}
+			]
+		},
+		{
+			"name":"libdc",
+			"no-autogen":true,
+			"sources":[
+				{
+					"type":"git",
+					"url":"git://git.subsurface-divelog.org/libdc"
+				},
+				{
+					"type":"shell",
+					"commands":["autoreconf --install", "./configure", "make"]
+				}
+			]
+		},
+		{
+			"name":"grantlee",
+			"buildsystem":"cmake",
+			"sources":[
+				{
+					"type":"git",
+					"url":"https://github.com/steveire/grantlee.git"
+				}
+			]
+		},
+		{
+			"name":"libgit2",
+			"buildsystem":"cmake",
+			"sources":[
+				{
+					"type":"git",
+					"url":"https://github.com/libgit2/libgit2.git"
+				}
+			]
+		},
+		{
+			"name":"libzip",
+			"no-autogen":true,
+			"sources":[
+				{
+					"type":"git",
+					"url":"https://github.com/nih-at/libzip.git"
+				},
+				{
+					"type":"shell",
+					"commands":["autoreconf -vfi", "./configure --prefix=/app", "make"]
+				}
+			]
+		},
+		{
+			"name":"qtconnectivity",
+			"cleanup-platform": ["/bin", "mkspecs"],
+			"sources":[
+				{
+					"type":"git",
+					"url":"git://code.qt.io/qt/qtconnectivity.git",
+					"branch":"v5.8.0"},
+				{
+					"type":"script",
+					"commands":["qmake"],
+					"dest-filename": "configure"
+				}
+			]
+		},
+		{
+			"name": "subsurface",
+			"buildsystem":"cmake",
+			"builddir":true,
+			"sources":[
+				{
+					"type":"git",
+					"url": "git://github.com/Subsurface-divelog/subsurface"
+				}
+			]
+		}
+	]
+}
