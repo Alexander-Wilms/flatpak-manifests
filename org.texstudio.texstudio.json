@@ -36,11 +36,7 @@
 			"qmake PREFIX=/app",
 			"make",
 			"make install",
-			"cd / && ls",
-			"cp /app/share/icons/hicolor/scalable/apps/texstudio.svg /app/share/icons/hicolor/scalable/apps/org.texstudio.texstudio.svg || true",
-			"cp /app/share/icons/hicolor/scalable/apps/texstudio.svg /files/share/icons/org.texstudio.texstudio.svg || true",
-			"cp /app/share/icons/hicolor/scalable/apps/texstudio.svg /app/share/icons/org.texstudio.texstudio.svg || true",
-			"cp /app/share/icons/hicolor/scalable/apps/texstudio.svg /files/share/icons/hicolor/scalable/apps/org.texstudio.texstudio.svg || true"
+			"cp /app/share/icons/hicolor/scalable/apps/texstudio.svg /app/share/icons/hicolor/scalable/apps/org.texstudio.texstudio.svg"
 			]
 		}
 	]
