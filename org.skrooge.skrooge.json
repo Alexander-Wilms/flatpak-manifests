@@ -1,0 +1,33 @@
+{
+	"app-id": "org.skrooge.skrooge",
+	"runtime": "org.kde.Platform",
+	"runtime-version": "master",
+	"sdk": "org.kde.Sdk",
+	"command": "skrooge",
+	"finish-args":[
+		"--socket=x11"
+	],
+	"modules":[
+		{
+			"name":"grantlee",
+			"buildsystem":"cmake",
+			"sources":[
+				{
+					"type":"git",
+					"url":"https://github.com/steveire/grantlee.git"
+				}
+			]
+		},
+		{
+			"name": "skrooge",
+			"buildsystem": "cmake",
+			"sources":[
+				{
+					"type":"archive",
+					"url": "https://download.kde.org/stable/skrooge/skrooge-2.7.0.tar.xz",
+					"sha256": "9dc8275f17f366156f2863501512320bdf6fa0c2a8834a36fd598840954d30f7"
+				}
+			]
+		}
+	]
+}
