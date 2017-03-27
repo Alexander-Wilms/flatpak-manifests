@@ -1,0 +1,47 @@
+{
+	"app-id": "org.texstudio.texstudio",
+	"runtime": "org.kde.Platform",
+	"runtime-version": "master",
+	"sdk": "org.kde.Sdk",
+	"command": "texstudio",
+	"rename-desktop-file": "texstudio.desktop",
+	"finish-args":[
+		"--socket=x11",
+		"--share=network"
+	],
+	"modules":[
+		{
+			"name": "poppler",
+			"buildsystem": "autotools",
+			"sources":[
+				{
+					"type": "archive",
+					"url": "https://poppler.freedesktop.org/poppler-0.53.0.tar.xz",
+					"sha256": "592bf72960c6b5948b67657594b05e72d9a278daf7613c9f3cdff9a5b73096a8"
+				}
+			]
+		},
+		{
+			"name": "texstudio",
+			"buildsystem": "simple",
+			"cleanup-platform": ["/bin", "/mkspecs"],
+			"sources":[
+				{
+					"type":"archive",
+					"url": "https://github.com/Alexander-Wilms/texstudio-archive/raw/master/texstudio-2.12.2.tar.gz",
+					"sha256": "3ffdaf0a3cb8bb9801e68ecba7641778b94121b4320de8751b79f2d8718cdcb1"
+				}
+			],
+			"build-commands": [
+			"qmake PREFIX=/app",
+			"make",
+			"make install",
+			"cd / && ls",
+			"cp /app/share/icons/hicolor/scalable/apps/texstudio.svg /app/share/icons/hicolor/scalable/apps/org.texstudio.texstudio.svg || true",
+			"cp /app/share/icons/hicolor/scalable/apps/texstudio.svg /files/share/icons/org.texstudio.texstudio.svg || true",
+			"cp /app/share/icons/hicolor/scalable/apps/texstudio.svg /app/share/icons/org.texstudio.texstudio.svg || true",
+			"cp /app/share/icons/hicolor/scalable/apps/texstudio.svg /files/share/icons/hicolor/scalable/apps/org.texstudio.texstudio.svg || true"
+			]
+		}
+	]
+}
