@@ -69,17 +69,23 @@
 		{
 			"name":"qtconnectivity",
 			"cleanup-platform": ["/bin", "mkspecs"],
+			"buildsystem": "simple",
 			"sources":[
 				{
 					"type":"git",
 					"url":"git://code.qt.io/qt/qtconnectivity.git",
-					"branch":"v5.8.0"},
-				{
-					"type":"script",
-					"commands":["qmake"],
-					"dest-filename": "configure"
+					"branch":"v5.7.1"
 				}
-			]
+			],
+			"build-commands": [
+								"qmake -set QT_INSTALL_PREFIX /app",
+								"qmake -set QT_INSTALL_HEADERS /app",
+								"qmake -set QT_INSTALL_CONFIGURATION /app",
+								"qmake PREFIX=/app",
+								"qmake",
+								"make",
+								"make install DESTDIR=/app"
+							]
 		},
 		{
 			"name": "subsurface",

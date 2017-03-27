@@ -1,0 +1,30 @@
+{
+	"app-id": "io.github.cloose.cutemarked",
+	"runtime": "org.kde.Platform",
+	"runtime-version": "master",
+	"sdk": "org.kde.Sdk",
+	"command": "cutemarked",
+	"rename-icon": "cutemarked",
+	"rename-appdata": "cutemarked",
+	"finish-args":[
+		"--socket=x11"
+	],
+	"modules":[
+		{
+			"name": "cutemarked",
+			"buildsystem": "simple",
+			"sources":[
+				{
+					"type":"git",
+					"url": "git://github.com/cloose/CuteMarkEd"
+				}
+			],
+			"build-commands": [
+			"find . -type f -name \"cutemarked.desktop\" -execdir rename cutemarked io.github.cloose.cutemarked {} \+",
+			"sed -i 's/cutemakred.desktop/io.github.cloose.cutemarked.desktop/g' ./CuteMarkEd.pro",
+			"qmake -makefile PREFIX=/app",
+			"make",
+			"make install"]
+		}
+	]
+}
