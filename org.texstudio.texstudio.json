@@ -4,6 +4,8 @@
 	"runtime-version": "master",
 	"sdk": "org.kde.Sdk",
 	"command": "texstudio",
+	"rename-icon": "texstudio",
+	"rename-appdata": "texstudio",
 	"rename-desktop-file": "texstudio.desktop",
 	"finish-args":[
 		"--socket=x11",
@@ -35,8 +37,7 @@
 			"build-commands": [
 			"qmake PREFIX=/app",
 			"make",
-			"make install",
-			"cp /app/share/icons/hicolor/scalable/apps/texstudio.svg /app/share/icons/hicolor/scalable/apps/org.texstudio.texstudio.svg"
+			"make install"
 			]
 		}
 	]
