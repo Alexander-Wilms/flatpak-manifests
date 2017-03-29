@@ -7,22 +7,45 @@
 	"rename-desktop-file": "mscore.desktop",
 	"rename-icon": "mscore",
 	"finish-args":[
+		"--share=network",
 		"--socket=x11",
 		"--socket=wayland"
 	],
 	"modules":[
-        {
-            "name": "lame",
-            "buildsystem": "autotools",
-            "sources":[
-                {
-                "type": "archive",
-                "url": "https://github.com/Alexander-Wilms/archive/raw/master/lame-3.99.5.tar.gz",
-                "sha256": "24346b4158e4af3bd9f2e194bb23eb473c75fb7377011523353196b19b9a23ff"
-                }
-            ]
-        },
-        {
+		{
+			"name": "portaudio",
+			"buildsystem": "autotools",
+			"sources": [
+				{
+					"type": "archive",
+					"url": "http://www.portaudio.com/archives/pa_stable_v190600_20161030.tgz",
+					"sha256": "f5a21d7dcd6ee84397446fa1fa1a0675bb2e8a4a6dceb4305a8404698d8d1513"
+				}
+			]
+		},
+		{
+			"name": "jack",
+			"buildsystem": "simple",
+			"sources": [
+				{
+					"type": "git",
+					"url": "git://github.com/jackaudio/jack2.git"
+				}
+			],
+			"build-commands": ["./waf configure --prefix=/app", "./waf build", "./waf install"]
+		},
+		{
+			"name": "lame",
+			"buildsystem": "autotools",
+			"sources":[
+				{
+					"type": "archive",
+					"url": "https://sourceforge.net/projects/lame/files/lame/3.99/lame-3.99.5.tar.gz",
+					"sha256": "24346b4158e4af3bd9f2e194bb23eb473c75fb7377011523353196b19b9a23ff"
+				}
+			]
+		},
+		{
 			"name": "poppler",
 			"buildsystem": "autotools",
 			"sources": [
@@ -33,10 +56,11 @@
 				}
 			]
 		},
+
 		{
 			"name": "musescore",
 			"buildsystem": "cmake",
-			"config-opts": ["-DBUILD_JACK=OFF", "-DBUILD_PORTAUDIO=OFF", "-DCMAKE_BUILD_TYPE=RELEASE"],
+			"config-opts": ["-DCMAKE_BUILD_TYPE=RELEASE"],
 			"sources":[
 				{
 					"type":"git",
