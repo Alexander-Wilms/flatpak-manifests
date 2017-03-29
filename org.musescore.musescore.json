@@ -1,0 +1,49 @@
+{
+	"app-id": "org.musescore.musescore",
+	"runtime": "org.kde.Platform",
+	"runtime-version": "master",
+	"sdk": "org.kde.Sdk",
+	"command": "musescore",
+	"rename-desktop-file": "mscore.desktop",
+	"rename-icon": "mscore",
+	"finish-args":[
+		"--socket=x11",
+		"--socket=wayland"
+	],
+	"modules":[
+        {
+            "name": "lame",
+            "buildsystem": "autotools",
+            "sources":[
+                {
+                "type": "archive",
+                "url": "https://github.com/Alexander-Wilms/archive/raw/master/lame-3.99.5.tar.gz",
+                "sha256": "24346b4158e4af3bd9f2e194bb23eb473c75fb7377011523353196b19b9a23ff"
+                }
+            ]
+        },
+        {
+			"name": "poppler",
+			"buildsystem": "autotools",
+			"sources": [
+				{
+					"type": "archive",
+					"url": "https://poppler.freedesktop.org/poppler-0.53.0.tar.xz",
+					"sha256": "592bf72960c6b5948b67657594b05e72d9a278daf7613c9f3cdff9a5b73096a8"
+				}
+			]
+		},
+		{
+			"name": "musescore",
+			"buildsystem": "cmake",
+			"config-opts": ["-DBUILD_JACK=OFF", "-DBUILD_PORTAUDIO=OFF", "-DCMAKE_BUILD_TYPE=RELEASE"],
+			"sources":[
+				{
+					"type":"git",
+					"url": "git://github.com/musescore/MuseScore"
+				}
+			],
+			"build-commands": ["make lrelease", "make", "make install PREFIX=/app"]
+		}
+	]
+}

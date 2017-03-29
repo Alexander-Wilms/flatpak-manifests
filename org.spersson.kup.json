@@ -1,0 +1,36 @@
+{
+	"app-id": "org.spersson.kup",
+	"runtime": "org.kde.Platform",
+	"runtime-version": "master",
+	"sdk": "org.kde.Sdk",
+	"command": "kup",
+	"rename-desktop-file": "kcm_kup.desktop",
+	"finish-args":[
+		"--socket=x11",
+		"--share=network"
+	],
+	"modules":[
+        {
+			"name": "gup",
+			"buildsystem": "simple",
+			"build-commands": ["make", "make install PREFIX=/app"],
+			"sources":[
+				{
+					"type":"git",
+					"url": "git://github.com/bup/bup"
+				}
+			]
+		},
+		{
+			"name": "kup",
+			"buildsystem": "simple",
+			"sources":[
+				{
+					"type":"git",
+					"url": "git://github.com/spersson/Kup"
+				}
+			],
+			"build-commands": ["make release", "make install prefix=/app"]
+		}
+	]
+}
