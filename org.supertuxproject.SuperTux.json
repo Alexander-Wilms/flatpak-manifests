@@ -109,6 +109,7 @@
 		{
 			"name": "supertux",
 			"buildsystem": "cmake",
+			"config-opts": ["-DINSTALL_SUBDIR_SHARE=share/supertux2", "-DINSTALL_SUBDIR_BIN=bin"],
 			"sources":[
 				{
 					"type":"archive",
@@ -120,9 +121,7 @@
 					"path": "supertux.patch"
 				}
 			],
-			"post-install": ["mv /app/games/supertux2 /app/bin/supertux2",
-							 "ln -s /app/lib64/libGLEW.so.2.0 /app/lib/libGLEW.so.2.0",
-							 "mv /app/share/games/supertux2/* /app/bin"],
+			"post-install": ["ln -s /app/lib64/libGLEW.so.2.0 /app/lib/libGLEW.so.2.0"],
 			"cleanup": ["/include"]
 		}
 	]
