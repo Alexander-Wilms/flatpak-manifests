@@ -1,0 +1,46 @@
+{
+	"app-id": "org.hedgewars.Hedgewars",
+	"runtime": "org.kde.Platform",
+	"runtime-version": "master",
+	"sdk": "org.kde.Sdk",
+	"command": "hedgewars",
+	"rename-icon": "supertux",
+	"rename-desktop-file": "supertux2.desktop",
+	"rename-appdata-file": "supertux2.appdata.xml",
+	"finish-args":[
+		"--socket=wayland",
+		"--socket=x11",
+		"--socket=pulseaudio",
+		"--share=network",
+		"--device=dri"
+	],
+	"modules":[
+
+		{
+			"name": "freepascal",
+			"buildsystem": "autotools",
+			"no-autogen": true,
+			"sources":[
+				{
+					"type": "archive",
+					"url": "https://sourceforge.net/projects/freepascal/files/Source/3.0.2/fpc-3.0.2.source.tar.gz",
+					"sha256": "67fccddf5da992356f4e90d836444750ce9363608c7db8e38c077f710fcb6258"
+				}
+			]
+		},
+{
+
+			"name": "hedgewars",
+			"buildsystem": "cmake",
+			"config-opts": ["-DCMAKE_BUILD_TYPE=\"Release\"", "-DNOSERVER=1", "-DPHYSFS_SYSTEM=off", "-DLUA_SYSTEM=off", "-DNOVIDEOREC=1", "-Wno-dev"],
+			"sources":[
+				{
+					"type":"archive",
+					"url": "https://github.com/hedgewars/hw/archive/0.9.22-release.tar.gz",
+					"sha256": "9c8b67c9e7ce610c4e31a184bce6b76af336170f965c804062b9ce49f0d7efdc"
+				}
+			],
+			"cleanup": ["/include"]
+		}
+	]
+}
