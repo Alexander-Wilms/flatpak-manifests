@@ -1,0 +1,71 @@
+{
+  "id" : "org.gramps_project.Gramps",
+  "runtime" : "org.gnome.Platform",
+  "runtime-version" : "3.24",
+  "runtime-commit" : "f2fc409921a84cef9b29bc39ca3782774a17aabc09c705844cb3f883d4317429",
+  "sdk" : "org.gnome.Sdk",
+  "sdk-commit" : "4d4e5ca289a88b9f57cbfd76abb790d20fd19196aef0244f4b2fdfdbf508e19f",
+  "command" : "gramps",
+  "modules" : [
+    {
+      "name" : "berkeley-db",
+      "buildsystem" : "simple",
+      "sources" : [
+        {
+          "url" : "http://download.oracle.com/berkeley-db/db-6.2.23.tar.gz",
+          "sha256" : "47612c8991aa9ac2f6be721267c8d3cdccf5ac83105df8e50809daea24e95dc7",
+          "type" : "archive"
+        }
+      ],
+      "build-commands" : [
+        "cd build_unix && ../dist/configure --prefix=/app && make && make install"
+      ]
+    },
+    {
+      "name" : "bsddb3",
+      "buildsystem" : "simple",
+      "sources" : [
+        {
+          "url" : "https://pypi.python.org/packages/95/1c/e8fb33007192f30b9a7276560c3c16499ab2a2c08abc59141b84e1afd3a9/bsddb3-6.1.1.tar.gz#md5=17cdf893a9bf09ef50773d2a35715a0e",
+          "sha256" : "6f21b0252125c07798d784c164ef135ad153d226c01b290258ee1c5b9e7c4dd3",
+          "type" : "archive"
+        }
+      ],
+      "build-commands" : [
+        "YES_I_HAVE_THE_RIGHT_TO_USE_THIS_BERKELEY_DB_VERSION=1 python3 setup.py build",
+        "YES_I_HAVE_THE_RIGHT_TO_USE_THIS_BERKELEY_DB_VERSION=1 python3 setup.py install --prefix /app"
+      ]
+    },
+    {
+      "name" : "gramps",
+      "buildsystem" : "simple",
+      "sources" : [
+        {
+          "url" : "https://github.com/gramps-project/gramps/archive/v4.2.5.tar.gz",
+          "sha256" : "1de3007215b7d0b779ec8f086e14e7a75f2aa811ee37c6d0cff06bfc9458743d",
+          "type" : "archive"
+        },
+        {
+          "path" : "gramps.patch",
+          "type" : "patch"
+        },
+        {
+          "path" : "python.patch",
+          "type" : "patch"
+        }
+      ],
+      "build-commands" : [
+        "python3 setup.py build",
+        "python3 setup.py install --prefix /app"
+      ]
+    }
+  ],
+  "finish-args" : [
+    "--socket=wayland",
+    "--socket=x11",
+    "--share=network"
+  ],
+  "rename-desktop-file" : "gramps.desktop",
+  "rename-appdata-file" : "gramps.appdata.xml",
+  "rename-icon" : "gramps"
+}

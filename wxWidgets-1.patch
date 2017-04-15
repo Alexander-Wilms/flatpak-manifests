@@ -1,0 +1,27 @@
+diff --git a/src/stc/scintilla/src/Editor.cxx b/src/stc/scintilla/src/Editor.cxx
+index cd72953..974c613 100644
+--- a/src/stc/scintilla/src/Editor.cxx
++++ b/src/stc/scintilla/src/Editor.cxx
+@@ -5841,10 +5841,21 @@ void Editor::GoToLine(int lineNo) {
+ }
+ 
+ static bool Close(Point pt1, Point pt2) {
+-	if (abs(pt1.x - pt2.x) > 3)
++	float testValue = pt1.x - pt2.x;
++	if (testValue < 0)
++		testValue *= -1;
++
++	if (testValue > 3)
+ 		return false;
+-	if (abs(pt1.y - pt2.y) > 3)
++
++	testValue = pt1.y - pt2.y;
++	if (testValue < 0)
++		testValue *= -1;
++
++	if (testValue > 3)
+ 		return false;
++	
++	
+ 	return true;
+ }

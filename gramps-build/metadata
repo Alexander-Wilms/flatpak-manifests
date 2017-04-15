@@ -1,0 +1,18 @@
+[Application]
+name=org.gramps_project.Gramps
+runtime=org.gnome.Platform/x86_64/3.24
+sdk=org.gnome.Sdk/x86_64/3.24
+command=gramps
+
+[Context]
+shared=network;
+sockets=x11;wayland;
+
+[Extension org.gramps_project.Gramps.Locale]
+directory=share/runtime/locale
+autodelete=true
+
+[Extension org.gramps_project.Gramps.Debug]
+directory=lib/debug
+autodelete=true
+no-autodownload=true

@@ -1,0 +1,4 @@
+[Application]
+name=io.sourceforge.ExtremeTuxRacer
+runtime=org.freedesktop.Platform/x86_64/1.6
+sdk=org.freedesktop.Sdk/x86_64/1.6

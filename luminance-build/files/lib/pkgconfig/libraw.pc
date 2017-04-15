@@ -1,0 +1,12 @@
+prefix=/app
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: libraw
+Description: Raw image decoder library (non-thread-safe)
+Requires.private: lcms2
+Version: 0.19.0-Snapshot-20170212
+Libs: -L${libdir} -lraw -fopenmp
+Libs.private: -lstdc++
+Cflags: -I${includedir}/libraw

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <id>org.gramps_project.Gramps.desktop</id>
+  <metadata_license>CC0</metadata_license>
+  <name>Gramps</name>
+  <summary>Genealogical research program</summary>
+
+  <description>
+    <p>Gramps is a genealogy program that is both intuitive for hobbyists and feature-complete for professional genealogists.</p>
+    <p xml:lang="cs">Gramps je genealogický program dostatečně intuitivní pro amatéra, ale disponujícími vlastnostmi, které uspokojí i profesionálního genealoga.</p>
+    <p xml:lang="da">Gramps er et slægtsforskningsprogram, der er let at bruge for begynderen, men indeholder alt hvad den erfarne slægtsforsker har brug for.</p>
+    <p xml:lang="de">Gramps ist ein Genealogieprogramm, dass sowohl intuitiv für Amateure, als auch ein vollständiges Werkzeug für professionelle Genealogen ist.</p>
+    <p xml:lang="eo">Gramps estas genealogia programo, kaj intuicia por hobiemuloj kaj plenebleca por profesiaj geneologistoj.</p>
+    <p xml:lang="fi">Gramps on sukututkimusohjelma, joka on harrastelijalle helppo käyttää ja jossa on ammattitutkijan tarvitsemat ominaisuudet.</p>
+    <p xml:lang="fr">Gramps est un programme de généalogie, intuitif pour le loisir et complet pour un usage professionnel.</p>
+    <p xml:lang="hu">A GRAMPS egy származástani program, amely ösztönösen használható hobbi kutatóknak, ugyanakkor képességekben gazdag a professzionális származáskutatók számára is.</p>
+    <p xml:lang="is">Gramps er ættfræðiforrit sem hentar vel áhugafólki en er einnig nógu fullkomið fyrir atvinnumenn á þessu sviði.</p>
+    <p xml:lang="it">Gramps è un programma di genealogia sia intuitivo per gli hobbisti, sia completo in termini di funzionalità per i genealogisti professionisti.</p>
+    <p xml:lang="nb">Gramps er et slektsprogram som er intuitivt for hobbygranskere og fullt av muligheter for profesjonelle slektsforskere.</p>
+    <p xml:lang="nl">Gramps is een genealogisch programma dat zowel intuïtief voor hobbyisten en zeer compleet voor professionele genealogen is.</p>
+    <p xml:lang="nn">Gramps er eit slektsgranskingsprogram som både er intuitivt for hobbybrukarar og funksjonsrikt for profesjonelle forskarar.</p>
+    <p xml:lang="pl">Gramps jest programem genealogicznym, który jest intuicyjny dla hobbistów oraz w pełni wyposażony dla profesjonalistów.</p>
+    <p xml:lang="pt_BR">Gramps é um programa de genealogia intuitivo para amadores e rico em recursos para os genealogistas profissionais.</p>
+    <p xml:lang="ru">Gramps - это генеалогическое приложение для использования любителями, а также имеет функционал необходимый профессионалам.</p>
+    <p xml:lang="sk">Gramps je genealogický program ktorý je intuitívny pre hobby používateľov, ale s dostatočnou fukncionalitou pre profesionálnych genealógov.</p>
+    <p xml:lang="sl">Gramps je rodosloven program, ki je hkrati intuitiven za rodoslovne navdušence in poln zmožnosti za poklicne rodoslovce.</p>
+    <p xml:lang="sr">Дедовник је програм родослова који је докучив хобистима и потпуно функционалан за професионалне родословнике.</p>
+    <p xml:lang="sv">Gramps är ett släktforskningsprogram som är både intuitivt för hobbyforskaren och komplett för den professionelle släktforskaren.</p>
+    <p xml:lang="uk">Gramps це генеалогічна програма, яка є одночасно інтуїтивно зрозумілою для любителів та має функції для професійних фахівців з генеалогії.</p>
+    <p xml:lang="zh_CN">Gramps 家谱软件，既简单易用，又功能全面，适合入门爱好者以至专业族谱研究人员使用。</p>
+    <p xml:lang="zh_HK">Gramps 家譜軟件，既簡單易用，又功能全面，適合入門愛好者以至專業族譜研究人員使用。</p>
+    <p xml:lang="zh_TW">Gramps 家譜軟體，既簡單易用，又功能全面，適合入門愛好者以至專業族譜研究人員使用。</p>
+    <p>It gives you the ability to record the many details of the life of an individual as well as the complex relationships between various people, places and events.</p>
+    <p xml:lang="cs">Dává vám možnost zaznamenat nespočet podrobností o životě jedince stejně jako popsat komplexní vztahy mezi různými lidmi, místy a událostmi.</p>
+    <p xml:lang="da">Programmet gør det muligt at notere de mange detaljer om den enkeltes liv, såvel som de komplekse forbindelser mellem forskellige mennesker, steder og hændelser.</p>
+    <p xml:lang="de">Es bietet dir die Möglichkeit, die vielen Details des Lebens aufzuzeichnen genauso wie komplexe Beziehungen zwischen verschiedenen Personen, Orten und Ereignissen. </p>
+    <p xml:lang="eo">Ĝi donas la eblecon registri la plej multajn detalojn de vivo de persono, same kiel la kompleksajn rilatojn inter diversaj personoj, lokoj kaj eventoj.</p>
+    <p xml:lang="fi">Sen avulla voit tallentaa henkilön elämänkaaren monia tapahtumia kuten myös monimutkaisia suhteita henkilöiden, paikkojen ja tapahtumien välillä.</p>
+    <p xml:lang="fr">Il vous permet d'enregistrer de nombreux détails sur la vie d'un individu ainsi que les relations complexes entre différentes personnes, différents lieux et événements.</p>
+    <p xml:lang="hu">Személyek, helyek és események számos adatának, valamint ezek bonyolult kapcsolatrendszerének rögzítését teszi lehetővé.</p>
+    <p xml:lang="is">Hægt er að skrá mörg nákvæm smáatriði í lífi einstaklinga, auk þess að geta haldið utan um flókin tengsl milli einstaklinga, staða og atburða.</p>
+    <p xml:lang="it">Ti permette di registrare gli svariati dettagli della vita di un individuo, così come le complesse relazioni tra varie persone, luoghi ed eventi.</p>
+    <p xml:lang="nb">Det gir mulighet til å lagre de mange detaljene i livet til en person så vel som komplekse slektsskap mellom ulike personer, steder og hendelser.</p>
+    <p xml:lang="nl">Met het programma kunt u vele details van het leven van individuen bijhouden en daarnaast de complexe relaties tussen verschillende personen, plaatsen en gebeurtenissen leggen.</p>
+    <p xml:lang="nn">Det lar deg registrera mange detaljar frå livet til ein person og likeeins dei komplekse relasjonane mellom personar, stader og hendingar.</p>
+    <p xml:lang="pl">Daje Ci możliwość zapisania wielu szczegółów z życia osób, jak również określenia skomplikowanych relacji pomiędzy różnymi osobami, miejscami i zdarzeniami.</p>
+    <p xml:lang="pt_BR">Ele oferece a capacidade de registrar os diversos detalhes da vida de uma pessoa bem como as relações complexas entre várias pessoas, lugares e eventos.</p>
+    <p xml:lang="ru">Программа предоставляет возможность записывать множество деталей жизни индивидуально или в комплексе отношений между различными людьми, местами и событиями.</p>
+    <p xml:lang="sk">Umožňuje Vám zaznamenávať mnoho detailov života jedinca ako aj komplexné vzťahy medzi rôznymi ľuďmi, lokalitami a udalosťami.</p>
+    <p xml:lang="sl">Omogoča vam beleženje mnogih podrobnosti v življenju posameznika, pa tudi zapletenih povezav med osebami, kraji in dogodki.</p>
+    <p xml:lang="sr">Пружа вам могућност за снимање мноштва података о животу неког појединца као и сложене односе између разних људи, места и догађаја.</p>
+    <p xml:lang="sv">Det ger dig tillgång till möjligheten att notera många livsdetaljer hos person såväl som de komplexa släktskapen mellan många människor, platser och händelser.</p>
+    <p xml:lang="uk">Дає вам можливість записувати багато деталей з життя як окремої людини, так і складні відносини між різними людьми, місцями і подіями.</p>
+    <p>All of your research is kept organized, searchable and as precise as you need it to be.</p>
+    <p xml:lang="cs">Celý váš výzkum je udržován organizovaný, prohledávatelný a tak precizní jaký jej potřebujete mít.</p>
+    <p xml:lang="da">Al din forskning er ordnet, søgbart og så detaljeret som du vil have den.</p>
+    <p xml:lang="de">All deine Recherchen werden organisiert, durchsuchbar und so präzise, wie du es benötigst aufbewahrt.</p>
+    <p xml:lang="en_GB">All of your research is kept organised, searchable and as precise as you need it to be.</p>
+    <p xml:lang="eo">Ĉiu via esploro estas konservata organizita, esplorebla kaj preciza kiel vi bezonas.</p>
+    <p xml:lang="fi">Kaikki tutkimuksesi pidetään juuri niin hallittuna, haettavissa ja tarkkana kuin sinulle on tarpeen.</p>
+    <p xml:lang="fr">Toutes vos recherches sont organisées, consultables et précises pour votre confort d'utilisation.</p>
+    <p xml:lang="hu">Minden kutatása szervezett, kereshető és olyan precíz lesz, ahogy annak lennie kell.</p>
+    <p xml:lang="is">Rannsóknir þínar verða skipulagðar, hægt að leita í þeim á marga vegu og nákvæmi þeirra getur verið jafn mikil og þér hentar.</p>
+    <p xml:lang="it">Tutta la tua ricerca viene mantenuta in ordine, con possibilità di ricerca e precisa in base alle tue necessità.</p>
+    <p xml:lang="nb">Alt av slektsforskningsdata blir organisert og er søkbare nettopp så bra som du vil det skal være.</p>
+    <p xml:lang="nl">Al uw onderzoek wordt geordend en doorzoekbaar gemaakt, precies zoals u dat wilt.</p>
+    <p xml:lang="nn">Alt forskingsmaterialet ditt blir organisert søkbart, og nett så presist som du treng det.</p>
+    <p xml:lang="pl">Wszystkie Twoje odkrycia są zorganizowane, przeszukiwalne oraz tak precyzyjne jak je potrzebujesz.</p>
+    <p xml:lang="pt_BR">Sua pesquisa é mantida organizada, pesquisável e tão precisa quanto você precisa que ele seja.</p>
+    <p xml:lang="ru">Все Ваши исследования хранятся в организованном виде с возможностью поиска и точны настолько, насколько это необходимо.</p>
+    <p xml:lang="sk">Všetok Váš výskum je organizovaný, prehľadávateľný a presne tak presný, ako potrebujete.</p>
+    <p xml:lang="sl">Z njim je vaše raziskovalno delo urejeno; omogoča iskanje in natančnost, kakršni želite.</p>
+    <p xml:lang="sr">Сва ваша истраживања се чувају сређена, претражива и тачна као што вама треба.</p>
+    <p xml:lang="sv"> All din forskning hålls organiserad, sökbar och precis så detaljerad du vill.</p>
+    <p xml:lang="uk">Всі ваші дослідження зберігатися організовано, з можливістю пошуку, та настільки точно, як вам це потрібно.</p>
+  </description>
+
+  <url type="homepage">https://gramps-project.org/</url>
+  <url type="bugtracker">https://gramps-project.org/bugs/</url>
+  <url type="help">https://gramps-project.org/wiki/index.php?title=Main_page</url>
+  <project_license>GPL-2.0+</project_license>
+  <developer_name>Gramps Development Team</developer_name>
+
+  <screenshots>
+    <screenshot width="1226" height="740">http://www.gramps-project.org/wiki/images/5/5f/AppData1.png</screenshot>
+    <screenshot width="1226" height="740">http://www.gramps-project.org/wiki/images/6/68/AppData2.png</screenshot>
+    <screenshot width="1226" type="default" height="740">http://www.gramps-project.org/wiki/images/e/e9/AppData3.png</screenshot>
+    <screenshot width="1226" height="740">http://www.gramps-project.org/wiki/images/6/68/AppData4.png</screenshot>
+    <screenshot width="1226" height="740">http://www.gramps-project.org/wiki/images/5/50/AppData5.png</screenshot>
+  </screenshots>
+
+  <provides>
+    <binary>gramps</binary>
+  </provides>
+
+</component>

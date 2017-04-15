@@ -1,0 +1,133 @@
+{
+	"app-id": "org.mrpt.RobotARMkinematics",
+	"runtime": "org.gnome.Platform",
+	"runtime-version": "3.24",
+	"sdk": "org.gnome.Sdk",
+	"command": "robotic-arm-kinematics",
+	"rename-icon": "robotic-arm-kinematics",
+	"rename-desktop-file": "robotic-arm-kinematics.desktop",
+	"rename-appdata-file": "robotic-arm-kinematics.appdata.xml",
+	"finish-args":[
+		"--socket=wayland",
+		"--socket=x11",
+		"--device=dri"
+	],
+	"modules":[
+		{
+			"name": "glew",
+			"no-autogen": true,
+			"make-args": [
+				"GLEW_PREFIX=/app",
+				"GLEW_DEST=/app",
+				"LIBDIR=/app/lib"
+			],
+			"make-install-args": [
+				"GLEW_PREFIX=/app",
+				"GLEW_DEST=/app",
+				"LIBDIR=/app/lib"
+			],
+
+			"sources":
+			[
+				{
+					"type":"archive",
+					"url": "https://sourceforge.net/projects/glew/files/glew/2.0.0/glew-2.0.0.tgz",
+					"sha256": "c572c30a4e64689c342ba1624130ac98936d7af90c3103f9ce12b8a0c5736764"
+				}
+			]
+		},
+		{
+			"name": "glbinding",
+			"buildsystem": "cmake",
+			"sources":[
+				{
+					"type":"archive",
+					"url": "https://github.com/cginternals/glbinding/archive/v2.1.1.tar.gz",
+					"sha256": "253671f2b730a6efa55de92a704938bb0f1761d151f3f8e87c043c51d46ea1e4"
+				}
+			]
+		},
+		{
+			"name": "glu",
+			"sources":
+			[
+				{
+					"type":"archive",
+					"url": "https://mesa.freedesktop.org/archive/glu/glu-9.0.0.tar.bz2",
+					"sha256": "1f7ad0d379a722fcbd303aa5650c6d7d5544fde83196b42a73d1193568a4df12"
+				}
+			]
+		},
+		{
+			"name": "opencv",
+			"buildsystem": "cmake",
+			"config-opts": ["-DBUILD_TESTS=OFF", "-Wno-dev", "-DWITH_IPP=OFF"],
+			"sources":[
+				{
+					"type":"archive",
+					"url": "https://github.com/opencv/opencv/archive/3.2.0.zip",
+					"sha256": "d2000ced54662e509adde1d781bf78526cc50fb4498d97a022d6f673c7bd175c"
+				},
+				{
+					"type": "file",
+					"url": "https://raw.githubusercontent.com/opencv/opencv_3rdparty/81a676001ca8075ada498583e4166079e5744668/ippicv/ippicv_linux_20151201.tgz",
+					"sha256": "4333833e40afaa22c804169e44f9a63e357e21476b765a5683bcb3760107f0da"
+				},
+				{
+					"type": "shell",
+					"commands": [
+						"ipp_file=ippicv_linux_20151201.tgz && ipp_hash=$(md5sum $ipp_file | cut -d\" \" -f1) && ipp_dir=3rdparty/ippicv/downloads/linux-$ipp_hash && mkdir -p $ipp_dir && cp $ipp_file $ipp_dir"]
+				}
+			]
+		},
+        {
+            "name": "wxWidgets",
+            "no-autogen": true,
+            "sources": [
+                {
+                    "type": "archive",
+                    "path": "wxWidgets-3.0.2.tar.bz2",
+                    "sha256": "346879dc554f3ab8d6da2704f651ecb504a22e9d31c17ef5449b129ed711585d"
+                },
+               {
+                   "type": "patch",
+                   "path": "wxWidgets-1.patch"                  
+               },
+               {
+                    "type": "shell",
+                    "commands": [
+                        "mkdir gtk-build",
+                        "cd gtk-build && ../configure --enable-unicode --prefix=/app && make -j5 install"
+                    ]
+                }
+            ]
+        },
+
+
+		{
+			"name": "assimp",
+			"buildsystem": "cmake",
+			"config-opts": ["-DASSIMP_BUILD_TESTS=OFF"],
+			"sources":[
+				{
+					"type":"archive",
+					"url": "https://github.com/assimp/assimp/archive/v3.3.1.tar.gz",
+					"sha256": "d385c3f90876241343f09e45f4e5033a6a05861b971c63d1f6d512371ffdc7bf"
+				}
+			]
+		},
+		{
+			"name": "robotic-arm-kinematics",
+			"buildsystem": "cmake",
+			"build-options": {"cxxflags": "-w"},
+			"config-opts": ["-DOPENCV_ICV_URL=\"http://downloads.sourceforge.net/project/opencvlibrary/3rdparty/ippicv\"", "-DBUILD_SHARED_LIBS=OFF", "-DBUILD_KINECT=OFF"],
+			"sources":[
+				{
+					"type":"archive",
+					"url": "https://github.com/MRPT/mrpt/archive/1.5.0-rc1.tar.gz",
+					"sha256": "3b6a9adb23a72a9d772a86efc79e1b9088d3784acb599ee7292d60d2a168cb01"
+				}
+			]
+		}
+	]
+}
