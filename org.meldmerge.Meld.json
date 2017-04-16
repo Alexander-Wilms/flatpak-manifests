@@ -1,0 +1,32 @@
+{
+    "app-id": "org.meldmerge.Meld",
+    "command": "meld",
+    "finish-args": [
+        "--socket=wayland",
+        "--socket=x11"
+    ],
+    "modules": [
+        {
+            "build-commands": [
+                "python3 setup.py build",
+                "python3 setup.py install --prefix /app"
+            ],
+            "buildsystem": "simple",
+            "name": "gramps",
+            "sources": [
+                {
+                    "sha256": "93c4f928319dae7484135ab292fe6ea4254123e8219549a66d3e2deba6a38e67",
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/meld/3.16/meld-3.16.4.tar.xz"
+                }
+            ]
+        }
+    ],
+    "rename-appdata-file": "meld.appdata.xml",
+    "rename-desktop-file": "meld.desktop",
+    "rename-icon": "meld",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "3.24",
+    "sdk": "org.gnome.Sdk"
+}
+

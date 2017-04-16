@@ -1,15 +1,3 @@
 .flatpak-builder
-cutemarked-build
-cutemarked-repo
-focuswriter-build
-focuswriter-repo
-musescore-build
-musescore-repo
-skrooge-build
-skrooge-repo
-kup-build
-kup-repo
-subsurface-build
-subsurface-repo
-texstudio-build
-texstudio-repo
+*-build
+*-repo
