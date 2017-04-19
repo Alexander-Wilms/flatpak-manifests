@@ -1,7 +1,7 @@
 {
-	"app-id": "com.github.needle-and-thread.vocal",
+	"app-id": "com.github.needle_and_thread.vocal",
 	"runtime": "org.gnome.Platform",
-	"runtime-version": "3.22",
+	"runtime-version": "3.24",
 	"sdk": "org.gnome.Sdk",
 	"command": "vocal",
 	"rename-icon": "com.github.needle-and-thread.vocal",
@@ -11,9 +11,44 @@
 		"--socket=wayland",
 		"--socket=x11",
 		"--share=network",
-		"--device=dri"
+		"--device=dri",
+		"--env=GST_PLUGIN_PATH_1_0=/app/lib/gstreamer-1.0",
+
+    "--talk-name=org.gtk.vfs",
+    "--talk-name=org.gtk.vfs.*",
+
+    "--env=DCONF_USER_CONFIG_DIR=.config/dconf",
+    "--filesystem=xdg-run/dconf",
+    "--filesystem=~/.config/dconf:ro",
+    "--talk-name=ca.desrt.dconf",
+    "--talk-name=org.freedesktop.secrets",
+
+    "--talk-name=org.freedesktop.Notifications",
+
+    "--talk-name=org.gnome.SettingsDaemon",
+    "--talk-name=org.mate.SettingsDaemon",
+
+    "--talk-name=org.gnome.ScreenSaver",
+    "--talk-name=org.cinnamon.ScreenSaver",
+    "--talk-name=org.freedesktop.ScreenSaver",
+    "--talk-name=com.canonical.Unity.Session",
+
+    "--own-name=org.mpris.MediaPlayer2.Vocal",
+    "--own-name=com.github.needle-and-thread.vocal",
+    "--filesystem=/tmp"
 	],
 	"modules":[
+		{
+			"name": "gst-libav",
+			"config-opts": [ "--disable-gtk-doc", "--with-system-libav" ],
+			"cleanup": [ "*.la", "/share/gtk-doc" ],
+			"sources": [{
+			"type": "archive",
+			"url": "https://gstreamer.freedesktop.org/src/gst-libav/gst-libav-1.10.4.tar.xz",
+			"sha256": "6ca0feca75e3d48315e07f20ec37cf6260ed1e9dde58df355febd5016246268b"
+			}],
+			"modules": [ "org.ffmpeg.FFmpeg.json" ]
+		},
 		{
 			"name": "intro",
 			"buildsystem": "autotools",
@@ -45,6 +80,10 @@
 					"type":"archive",
 					"url": "https://launchpad.net/granite/0.4/0.4.0.1/+download/granite-0.4.0.1.tar.xz",
 					"sha256": "95a142a8befeedc35a089d638e759b657905508dc3007036d6c1fa3efe94c4dd"
+				},
+				{
+					"type": "patch",
+					"path": "granite.patch"
 				}
 			]
 		},
