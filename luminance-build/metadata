@@ -1,4 +1,0 @@
-[Application]
-name=net.sourceforge.LuminanceHDR
-runtime=org.kde.Platform/x86_64/master
-sdk=org.kde.Sdk/x86_64/master
