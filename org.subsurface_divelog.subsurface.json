@@ -5,7 +5,9 @@
 	"sdk": "org.kde.Sdk",
 	"command": "subsurface",
 	"finish-args":[
-		"--socket=x11"
+		"--socket=x11",
+		"--share=network",
+		"--device=dri"
 	],
 	"modules":[
 		{
@@ -19,36 +21,12 @@
 			]
 		},
 		{
-			"name":"libdc",
-			"no-autogen":true,
-			"sources":[
-				{
-					"type":"git",
-					"url":"git://git.subsurface-divelog.org/libdc"
-				},
-				{
-					"type":"shell",
-					"commands":["autoreconf --install", "./configure", "make"]
-				}
-			]
-		},
-		{
 			"name":"grantlee",
 			"buildsystem":"cmake",
 			"sources":[
 				{
 					"type":"git",
 					"url":"https://github.com/steveire/grantlee.git"
-				}
-			]
-		},
-		{
-			"name":"libgit2",
-			"buildsystem":"cmake",
-			"sources":[
-				{
-					"type":"git",
-					"url":"https://github.com/libgit2/libgit2.git"
 				}
 			]
 		},
@@ -68,14 +46,44 @@
 		},
 		{
 			"name": "subsurface",
-			"buildsystem":"cmake",
+			"buildsystem":"simple",
 			"builddir":true,
 			"sources":[
 				{
 					"type":"git",
-					"url": "git://github.com/Subsurface-divelog/subsurface"
+					"url": "git://github.com/Subsurface-divelog/subsurface",
+					"dest": "subsurface"
+				},
+				{
+					"type":"git",
+					"url":"https://github.com/libgit2/libgit2.git",
+					"dest": "libgit2"
+				},
+				{
+					"type":"git",
+					"url":"git://git.subsurface-divelog.org/libdc",
+					"branch": "Subsurface-branch",
+					"dest": "libdivecomputer"
+				},
+				{
+					"type":"git",
+					"url":"git://git.subsurface-divelog.org/marble",
+					"branch": "Subsurface-branch",
+					"dest": "marble-source"
+				},
+				{
+					"type": "shell",
+					"commands": [
+						"perl -pi -e 's/BUILDGRANTLEE=1/BUILDGRANTLEE=0/' subsurface/scripts/build.sh",
+						"perl -pi -e 's/BUILDMARBLE=1/BUILDMARBLE=0/' subsurface/scripts/build.sh"
+					]
+				},
+				{
+					"type": "patch",
+					"path": "subsurface.patch"
 				}
-			]
+			],
+			"build-commands": ["ln -s /app/lib64/libssh2.a /app/lib/libssh2.a && subsurface/scripts/build.sh && cd subsurface/build && LIBRARY_PATH=/app/lib make install prefix=/app"]
 		}
 	]
 }
