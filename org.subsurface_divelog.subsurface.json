@@ -3,11 +3,33 @@
 	"runtime": "org.kde.Platform",
 	"runtime-version": "master",
 	"sdk": "org.kde.Sdk",
-	"command": "subsurface",
+	"command": "subsurface.sh",
+	"rename-icon": "subsurface-icon",
+	"rename-appdata-file": "subsurface.appdata.xml",
+	"rename-desktop-file": "subsurface.desktop",
 	"finish-args":[
+		"--socket=wayland",
 		"--socket=x11",
 		"--share=network",
-		"--device=dri"
+		"--device=dri",
+		"--filesystem=home",
+		"--device=all"
+	],
+	"build-options": {
+		"cflags": "-O2",
+		"cxxflags": "-O2"
+	},
+	"cleanup": [
+		"/include",
+		"/lib/pkgconfig",
+		"/lib64/pkgconfig",
+		"/lib/debug",
+		"/lib/cmake",
+		"/share/doc",
+		"/share/man",
+		"*.a",
+		"*.la",
+		"*.cmake"
 	],
 	"modules":[
 		{
@@ -81,9 +103,25 @@
 				{
 					"type": "patch",
 					"path": "subsurface.patch"
+				},
+				{
+					"type": "file",
+					"path": "subsurface.sh"
+				},
+				{
+					"type": "shell",
+					"commands": [
+						"cp subsurface.sh /app/bin",
+						"chmod +x /app/bin/subsurface.sh",
+						"mkdir -p /app/share/metainfo && cp  ./subsurface/appdata/subsurface.appdata.xml /app/share/metainfo"
+					]
 				}
 			],
-			"build-commands": ["ln -s /app/lib64/libssh2.a /app/lib/libssh2.a && subsurface/scripts/build.sh && cd subsurface/build && LIBRARY_PATH=/app/lib make install prefix=/app"]
+			"build-commands": [
+				"ln -s /app/lib64/libssh2.a /app/lib/libssh2.a",
+				"subsurface/scripts/build.sh",
+				"cd subsurface/build && LIBRARY_PATH=/app/lib make install prefix=/app"
+			]
 		}
 	]
 }
