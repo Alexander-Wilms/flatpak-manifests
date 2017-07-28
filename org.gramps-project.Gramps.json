@@ -1,133 +1,147 @@
 {
-    "app-id": "org.gramps_project.Gramps",
-    "command": "gramps",
-    "finish-args": [
-        "--socket=wayland",
-        "--socket=x11",
-        "--share=network"
-    ],
-    "modules": [
-        {
-            "build-commands": [
-                "cd build_unix && ../dist/configure --prefix=/app && make && make install"
-            ],
-            "buildsystem": "simple",
-            "name": "berkeley-db",
-            "sources": [
-                {
-                    "sha256": "47612c8991aa9ac2f6be721267c8d3cdccf5ac83105df8e50809daea24e95dc7",
-                    "type": "archive",
-                    "url": "http://download.oracle.com/berkeley-db/db-6.2.23.tar.gz"
-                }
-            ]
-        },
-        {
-            "build-commands": [
-                "python3 setup.py build",
-                "python3 setup.py install --prefix /app",
-								"echo del && rm /app/lib/python3.5/site-packages/easy-install.pth"
-            ],
-
-            "buildsystem": "simple",
-            "name": "pyICU",
-            "sources": [
-                {
-                    "sha256": "c5c2134f7ad5aa939a899633816f52d8921e787efd4e8d7efb5f450fe10f2550",
-                    "type": "archive",
-                    "url": "https://pypi.python.org/packages/bc/78/f4e26f67c9b6b9074baa576ae67947e42fb86039199a65e9ab91ddb51d26/PyICU-1.9.6.tar.gz#md5=bb7838411ba9c7363503745220c754e9"
-                }
-            ]
-        },
-        {
-            "build-commands": [
-                "YES_I_HAVE_THE_RIGHT_TO_USE_THIS_BERKELEY_DB_VERSION=1 python3 setup.py build",
-                "YES_I_HAVE_THE_RIGHT_TO_USE_THIS_BERKELEY_DB_VERSION=1 python3 setup.py install --prefix /app"
-            ],
-            "buildsystem": "simple",
-            "name": "bsddb3",
-            "sources": [
-                {
-                    "sha256": "6f21b0252125c07798d784c164ef135ad153d226c01b290258ee1c5b9e7c4dd3",
-                    "type": "archive",
-                    "url": "https://pypi.python.org/packages/95/1c/e8fb33007192f30b9a7276560c3c16499ab2a2c08abc59141b84e1afd3a9/bsddb3-6.1.1.tar.gz#md5=17cdf893a9bf09ef50773d2a35715a0e"
-                }
-            ]
-        },
-        {
-            "cleanup": [
-                "/bin"
-            ],
-            "name": "exiv2",
-            "sources": [
-                {
-                    "sha256": "c80bfc778a15fdb06f71265db2c3d49d8493c382e516cb99b8c9f9cbde36efa4",
-                    "type": "archive",
-                    "url": "http://www.exiv2.org/exiv2-0.25.tar.gz"
-                },
-                {
-                    "path": "exiv2-no-builddir.patch",
-                    "type": "patch"
-                },
-                {
-                    "commands": [
-                        "cp -f /usr/share/gnu-config/config.sub ./config/",
-                        "cp -f /usr/share/gnu-config/config.guess ./config/"
-                    ],
-                    "type": "shell"
-                }
-            ]
-        },
-        {
-            "name": "gexiv2",
-            "config-opts": [ "--enable-introspection", "--exec-prefix=/app", "--with-python3-girdir"],
-						"ensure-writable":["/usr/lib/*"],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://download.gnome.org/sources/gexiv2/0.10/gexiv2-0.10.4.tar.xz",
-                    "sha256": "ad8d31afdc0a1932cc44c4cfcea449497c0d0b445c0ad2f9735707b306e71ca4"
-                }
-            ]
-        },
-        {
-            "name": "osm",
-            "sources": [
-                {
-                    "sha256": "027004459f2f29232d4ca0c914f835e6c06b720aef1daa9b470d9d5e1b71159b",
-                    "type": "archive",
-                    "url": "https://github.com/nzjrs/osm-gps-map/archive/1.1.0.tar.gz"
-                }
-            ]
-        },
-        {
-            "build-commands": [
-                "python3 setup.py build",
-                "python3 setup.py install --prefix /app"
-            ],
-            "buildsystem": "simple",
-            "name": "gramps",
-            "sources": [
-                {
-                    "sha256": "1de3007215b7d0b779ec8f086e14e7a75f2aa811ee37c6d0cff06bfc9458743d",
-                    "type": "archive",
-                    "url": "https://github.com/gramps-project/gramps/archive/v4.2.5.tar.gz"
-                },
-                {
-                    "path": "gramps.patch",
-                    "type": "patch"
-                },
-                {
-                    "path": "python.patch",
-                    "type": "patch"
-                }
-            ]
-        }
-    ],
-    "rename-appdata-file": "gramps.appdata.xml",
-    "rename-desktop-file": "gramps.desktop",
-    "rename-icon": "gramps",
-    "runtime": "org.gnome.Platform",
-    "runtime-version": "3.24",
-    "sdk": "org.gnome.Sdk"
+	"app-id": "org.gramps_project.Gramps",
+	"command": "gramps",
+	"finish-args": [
+		"--socket=wayland",
+		"--socket=x11",
+		"--share=network",
+		"--filesystem=host"
+	],
+	"build-options": {
+		"cflags": "-O2",
+		"cxxflags": "-O2"
+	},
+	"cleanup": [
+		"/include",
+		"/lib/pkgconfig",
+		"*.a",
+		"*.la"
+	],
+	"modules": [
+		{
+			"build-commands": [
+				"cd build_unix && ../dist/configure --prefix=/app && make && make install"
+			],
+			"buildsystem": "simple",
+			"name": "berkeley-db",
+			"sources": [
+				{
+					"sha256": "47612c8991aa9ac2f6be721267c8d3cdccf5ac83105df8e50809daea24e95dc7",
+					"type": "archive",
+					"url": "http://download.oracle.com/berkeley-db/db-6.2.23.tar.gz"
+				}
+			]
+		},
+		{
+			"build-commands": [
+				"python3 setup.py build",
+				"python3 setup.py install --prefix /app"
+			],
+			"ensure-writable": [
+				"/lib/python*/site-packages/easy-install.pth"
+			],
+			"buildsystem": "simple",
+			"name": "pyICU",
+			"sources": [
+				{
+					"sha256": "c5c2134f7ad5aa939a899633816f52d8921e787efd4e8d7efb5f450fe10f2550",
+					"type": "archive",
+					"url": "https://pypi.python.org/packages/bc/78/f4e26f67c9b6b9074baa576ae67947e42fb86039199a65e9ab91ddb51d26/PyICU-1.9.6.tar.gz#md5=bb7838411ba9c7363503745220c754e9"
+				}
+			]
+		},
+		{
+			"build-commands": [
+				"YES_I_HAVE_THE_RIGHT_TO_USE_THIS_BERKELEY_DB_VERSION=1 python3 setup.py build",
+				"YES_I_HAVE_THE_RIGHT_TO_USE_THIS_BERKELEY_DB_VERSION=1 python3 setup.py install --prefix /app"
+			],
+			"ensure-writable": [
+				"/lib/python*/site-packages/easy-install.pth"
+			],
+			"buildsystem": "simple",
+			"name": "bsddb3",
+			"sources": [
+				{
+					"sha256": "6f21b0252125c07798d784c164ef135ad153d226c01b290258ee1c5b9e7c4dd3",
+					"type": "archive",
+					"url": "https://pypi.python.org/packages/95/1c/e8fb33007192f30b9a7276560c3c16499ab2a2c08abc59141b84e1afd3a9/bsddb3-6.1.1.tar.gz#md5=17cdf893a9bf09ef50773d2a35715a0e"
+				}
+			]
+		},
+		{
+			"cleanup": [
+				"/bin"
+			],
+			"name": "exiv2",
+			"sources": [
+				{
+					"sha256": "c80bfc778a15fdb06f71265db2c3d49d8493c382e516cb99b8c9f9cbde36efa4",
+					"type": "archive",
+					"url": "http://www.exiv2.org/exiv2-0.25.tar.gz"
+				},
+				{
+					"path": "exiv2-no-builddir.patch",
+					"type": "patch"
+				},
+				{
+					"commands": [
+						"cp -f /usr/share/gnu-config/config.sub ./config/",
+						"cp -f /usr/share/gnu-config/config.guess ./config/"
+					],
+					"type": "shell"
+				}
+			]
+		},
+		{
+			"name": "gexiv2",
+			"config-opts": ["--with-python3-girdir"],
+			"sources": [
+				{
+					"type": "archive",
+					"url": "https://git.gnome.org/browse/gexiv2/snapshot/gexiv2-0.10.6.tar.xz",
+					"sha256": "d4a8de69b9fa368b0b7a8dfc7c6ee3c98e9c14a18378877a8de402ae244ecf0d"
+				}
+			]
+		},
+		{
+			"name": "osm",
+			"sources": [
+				{
+					"sha256": "027004459f2f29232d4ca0c914f835e6c06b720aef1daa9b470d9d5e1b71159b",
+					"type": "archive",
+					"url": "https://github.com/nzjrs/osm-gps-map/archive/1.1.0.tar.gz"
+				}
+			]
+		},
+		{
+			"build-commands": [
+				"python3 setup.py build",
+				"python3 setup.py install --prefix /app"
+			],
+			"buildsystem": "simple",
+			"name": "gramps",
+			"sources": [
+				{
+					"sha256": "1de3007215b7d0b779ec8f086e14e7a75f2aa811ee37c6d0cff06bfc9458743d",
+					"type": "archive",
+					"url": "https://github.com/gramps-project/gramps/archive/v4.2.5.tar.gz"
+				},
+				{
+					"path": "gramps.patch",
+					"type": "patch"
+				},
+				{
+					"path": "python.patch",
+					"type": "patch"
+				}
+			]
+		}
+	],
+	"rename-appdata-file": "gramps.appdata.xml",
+	"rename-desktop-file": "gramps.desktop",
+	"rename-icon": "gramps",
+	"runtime": "org.gnome.Platform",
+	"runtime-version": "3.24",
+	"sdk": "org.gnome.Sdk"
 }
 
