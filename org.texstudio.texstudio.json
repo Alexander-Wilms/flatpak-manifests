@@ -1,7 +1,7 @@
 {
-	"app-id": "org.texstudio.texstudio",
+	"app-id": "org.texstudio.TeXstudio",
 	"runtime": "org.kde.Platform",
-	"runtime-version": "master",
+	"runtime-version": "5.9",
 	"sdk": "org.kde.Sdk",
 	"command": "texstudio",
 	"rename-icon": "texstudio",
@@ -9,8 +9,9 @@
 	"rename-desktop-file": "texstudio.desktop",
 	"finish-args":[
 		"--socket=x11",
+		"--socket=wayland",
 		"--share=network",
-		"--filesystem=host"
+		"--filesystem=home"
 	],
 	"modules":[
 		{
