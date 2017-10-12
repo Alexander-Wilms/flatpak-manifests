@@ -1,0 +1,55 @@
+{
+	"app-id": "io.github.cloose.CuteMarkEd",
+	"runtime": "org.kde.Platform",
+	"runtime-version": "5.9",
+	"sdk": "org.kde.Sdk",
+	"command": "cutemarked",
+	"rename-icon": "cutemarked",
+	"rename-appdata-file": "cutemarked.appdata.xml",
+	"finish-args":[
+		"--socket=x11",
+		"--socket=wayland",
+		"--filesystem=home"
+	],
+	"modules":[
+			{
+			"name": "qtwebkit",
+			"buildsystem": "simple",
+			"cleanup-platform": [
+				"/bin",
+				"/mkspecs"
+			],
+			"sources": [
+				{
+					"type": "archive",
+					"url": "https://github.com/qt/qtwebkit/archive/v5.212.0-alpha2.tar.gz",
+					"sha256": "6db43b931f64857cfda7bcf89914e2730b82164871a8c24c1881620e6bfdeca1"
+				}
+			],
+			"build-commands": [
+				"qmake",
+				"grep -rl '/usr/local' . | xargs sed -i 's|/usr/local|/app|g'",
+				"make",
+				"find . -name \"cmake_install.cmake\" | xargs sed -i 's|/usr|/app|g'",
+				"make install"
+			]
+		},
+		{
+			"name": "cutemarked",
+			"buildsystem": "simple",
+			"sources":[
+				{
+					"type":"archive",
+					"url": "https://github.com/cloose/CuteMarkEd/archive/v0.11.3.tar.gz",
+					"sha256": "78a41808c2f0452375810abdff76eeaaee012f8d1368a2b8772ec6b4d2ceeec8"
+				}
+			],
+			"build-commands": [
+			"find . -type f -name \"cutemarked.desktop\" -execdir rename cutemarked io.github.cloose.cutemarked {} \+",
+			"sed -i 's/cutemakred.desktop/io.github.cloose.cutemarked.desktop/g' ./CuteMarkEd.pro",
+			"qmake -makefile PREFIX=/app",
+			"make",
+			"make install"]
+		}
+	]
+}
